@@ -1,0 +1,17 @@
+
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //以下这两个很重要，看似重复，实际上第一行是决定依赖关系的，可以保证在主模块调用注解类
+    // 第二行annotationProcessor是决定注解的注册生成的，只有注解过才能正常在编译期间生成
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
+
+}
